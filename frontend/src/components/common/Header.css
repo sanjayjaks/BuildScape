@@ -1,0 +1,127 @@
+.app-header {
+  background: linear-gradient(135deg, rgba(29, 29, 29, 0.95) 0%, rgba(45, 45, 45, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 1.25rem 0;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-container {
+  width: 92%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.logo {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: white;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  position: relative;
+  padding: 0.5rem 0;
+  background: linear-gradient(90deg, #fff, #e0e0e0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, #fff, #64B5F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.app-header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.app-header nav ul li a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.app-header nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #64B5F6;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.app-header nav ul li a:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.app-header nav ul li a:hover::after {
+  width: 80%;
+}
+
+.app-header nav ul li a.active {
+  background: rgba(100, 181, 246, 0.2);
+  color: #64B5F6;
+}
+
+.auth-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.auth-links a, .auth-links span {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.auth-links a:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.auth-links .logout-button {
+  background: linear-gradient(135deg, #FF5252 0%, #FF1744 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(255, 23, 68, 0.2);
+}
+
+.auth-links .logout-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 23, 68, 0.3);
+  background: linear-gradient(135deg, #FF1744 0%, #D50000 100%);
+}

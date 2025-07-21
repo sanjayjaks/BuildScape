@@ -1,0 +1,146 @@
+.search-filter-form {
+  /* Classic, solid background */
+  background: #ffffff; /* White background */
+  
+  /* Enhanced spacing and borders */
+  padding: 24px;
+  border-radius: 8px; /* Slightly less rounded than modern for classic feel */
+  border: 1px solid #cccccc; /* Light grey border */
+  
+  /* Subtle shadow for classic depth */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+  margin-bottom: 2rem;
+  
+  /* Smooth transitions */
+  transition: all 0.2s ease; /* Slightly faster for less 'floaty' feel */
+}
+
+.search-filter-form:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Slightly darker shadow on hover */
+  /* transform: translateY(-2px); // Removed for a more classic, less animated feel */
+}
+
+.search-filter-form h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #000000; /* Black text */
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.filter-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 1rem;
+}
+
+/* Enhanced form inputs */
+.search-filter-form input[type="text"],
+.search-filter-form input[type="number"],
+.search-filter-form select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #999999; /* Medium grey border */
+  border-radius: 4px; /* Slightly less rounded for classic feel */
+  font-size: 1rem;
+  color: #000000; /* Black text */
+  background: #ffffff; /* White background */
+  
+  /* Smooth transitions */
+  transition: all 0.2s ease;
+  
+  /* Remove default styles */
+  outline: none;
+  appearance: none;
+}
+
+/* Placeholder styling */
+.search-filter-form input[type="text"]::placeholder,
+.search-filter-form input[type="number"]::placeholder {
+  color: #666666; /* Darker grey placeholder */
+  opacity: 1;
+}
+
+/* Focus states */
+.search-filter-form input[type="text"]:focus,
+.search-filter-form input[type="number"]:focus,
+.search-filter-form select:focus {
+  border-color: #000000; /* Black border on focus */
+  box-shadow: 0 0 0 2px #666666; /* Grey outline for focus */
+  background: #f8f8f8; /* Slightly off-white background on focus */
+}
+
+/* Hover states for inputs */
+.search-filter-form input[type="text"]:hover,
+.search-filter-form input[type="number"]:hover,
+.search-filter-form select:hover {
+  border-color: #666666; /* Darker grey border on hover */
+  background: #f8f8f8; /* Slightly off-white background on hover */
+}
+
+/* Enhanced button styling */
+.search-filter-form button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff; /* White text */
+  background: #000000; /* Solid black background */
+  border: none;
+  border-radius: 4px; /* Slightly less rounded for classic feel */
+  cursor: pointer;
+  
+  /* Enhanced shadow and transitions */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  
+  /* Prevent text selection */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.search-filter-form button:hover {
+  background: #333333; /* Darker grey on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  /* transform: translateY(-1px); // Removed for a more classic, less animated feel */
+}
+
+.search-filter-form button:active {
+  background: #666666; /* Medium grey on active */
+  /* transform: translateY(0); // Removed */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.search-filter-form button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #666666; /* Grey outline for focus */
+}
+
+/* Custom select arrow */
+.search-filter-form select {
+  /* Black SVG arrow */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23000000' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .search-filter-form {
+    padding: 20px;
+    border-radius: 6px;
+  }
+  
+  .filter-controls {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .search-filter-form h3 {
+    font-size: 1.125rem;
+  }
+}

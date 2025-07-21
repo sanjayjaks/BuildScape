@@ -1,0 +1,450 @@
+.project-card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 400px;
+  margin: 1rem auto;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #28a745, #34d058);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card-image {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  filter: brightness(0.95);
+}
+
+.project-card:hover .project-card-image {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+.project-card-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  position: relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, #ffffff 100%);
+}
+
+.project-card-content h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #2d3436;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.project-card:hover .project-card-content h3 {
+  color: #28a745;
+}
+
+.project-category {
+  font-size: 0.95rem;
+  color: #636e72;
+  margin-bottom: 0.75rem;
+  font-style: italic;
+  letter-spacing: 0.3px;
+  display: inline-block;
+  padding: 4px 12px;
+  background-color: rgba(40, 167, 69, 0.1);
+  border-radius: 20px;
+}
+
+.project-card-content p {
+  font-size: 1rem;
+  color: #636e72;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.project-status {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project-status::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.project-status.in-progress {
+  color: #007bff;
+}
+
+.project-status.completed {
+  color: #28a745;
+}
+
+.project-status.planning {
+  color: #ffc107;
+}
+
+.project-card .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #28a745 0%, #34d058 100%);
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  align-self: flex-start;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.25);
+}
+
+.project-card .button:hover {
+  background: linear-gradient(135deg, #34d058 0%, #28a745 100%);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.35);
+  transform: translateY(-2px);
+}
+
+.project-card .button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(40, 167, 69, 0.2);
+}
+
+.project-card .button::after {
+  content: '→';
+  margin-left: 8px;
+  transition: transform 0.2s ease;
+}
+
+.project-card .button:hover::after {
+  transform: translateX(4px);
+}
+
+/* Additional styles for enhanced project cards */
+
+.project-card .image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card .image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.7));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .image-overlay {
+  opacity: 1;
+}
+
+.project-card .project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: rgba(255,255,255,0.95);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.project-card .meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.project-card .meta-icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.project-card .tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.project-card .tag {
+  padding: 4px 12px;
+  background: rgba(0,123,255,0.1);
+  color: #007bff;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.project-card .tag:hover {
+  background: rgba(0,123,255,0.2);
+  transform: translateY(-1px);
+}
+
+.project-card .progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #e9ecef;
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.project-card .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #28a745, #34d058);
+  transition: width 0.3s ease;
+}
+
+.project-card .timeline {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.project-card .timeline-date {
+  font-size: 0.85rem;
+  color: #666;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project-card .timeline-date span {
+  font-weight: 600;
+  color: #333;
+}
+
+.project-card .favorite-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255,255,255,0.9);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 2;
+}
+
+.project-card .favorite-button:hover {
+  transform: scale(1.1);
+  background: white;
+}
+
+.project-card .favorite-button.active {
+  color: #dc3545;
+}
+
+.project-card .share-options {
+  position: absolute;
+  top: 1rem;
+  right: 4rem;
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .share-options {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.project-card .share-button {
+  background: rgba(255,255,255,0.9);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.project-card .share-button:hover {
+  transform: scale(1.1);
+  background: white;
+}
+
+.project-card .project-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.project-card .detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.project-card .detail-label {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.project-card .detail-value {
+  font-weight: 600;
+  color: #333;
+}
+
+.project-card .actions-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.project-card .secondary-button {
+  background: transparent;
+  border: 1px solid #28a745;
+  color: #28a745;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.project-card .secondary-button:hover {
+  background: rgba(40, 167, 69, 0.1);
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    max-width: 100%;
+    margin: 0.75rem 0;
+  }
+  
+  .project-card-image {
+    height: 200px;
+  }
+  
+  .project-card-content {
+    padding: 1.25rem;
+  }
+  
+  .project-card-content h3 {
+    font-size: 1.25rem;
+  }
+  
+  .project-card .project-details {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-card .actions-container {
+    flex-direction: column;
+  }
+  
+  .project-card .share-options {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card-image {
+    height: 180px;
+  }
+  
+  .project-card .meta-item {
+    font-size: 0.8rem;
+  }
+  
+  .project-card .timeline {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .project-card {
+    max-width: 450px;
+  }
+  
+  .project-card-image {
+    height: 280px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-card-image,
+  .project-card .button,
+  .project-card .favorite-button,
+  .project-card .share-button {
+    transition: none;
+  }
+}
+
+@media print {
+  .project-card {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+  
+  .project-card .button,
+  .project-card .favorite-button,
+  .project-card .share-options {
+    display: none;
+  }
+}

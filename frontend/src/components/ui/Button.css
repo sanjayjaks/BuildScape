@@ -1,0 +1,119 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  position: relative;
+}
+
+/* Variants */
+.button-primary {
+  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+  color: white;
+}
+
+.button-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+  transform: translateY(-1px);
+}
+
+.button-secondary {
+  background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
+  color: white;
+}
+
+.button-secondary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+  transform: translateY(-1px);
+}
+
+.button-outline {
+  background: transparent;
+  border: 2px solid #4299e1;
+  color: #4299e1;
+}
+
+.button-outline:hover:not(:disabled) {
+  background: rgba(66, 153, 225, 0.1);
+  transform: translateY(-1px);
+}
+
+.button-text {
+  background: transparent;
+  color: #4299e1;
+  padding: 0.5rem;
+}
+
+.button-text:hover:not(:disabled) {
+  background: rgba(66, 153, 225, 0.1);
+}
+
+/* Sizes */
+.button-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.button-medium {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+}
+
+.button-large {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+/* States */
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.button-full-width {
+  width: 100%;
+}
+
+/* Loading state */
+.button-loading {
+  cursor: wait;
+}
+
+.button-loader {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Icon */
+.button-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Focus state */
+.button:focus-visible {
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.4);
+}
+
+/* Active state */
+.button:active:not(:disabled) {
+  transform: translateY(1px);
+} 

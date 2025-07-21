@@ -1,0 +1,441 @@
+/* CSS Custom Properties for Better Maintainability */
+:root {
+  --primary-silver: #7f8c8d;
+  --primary-gold: #f1c40f;
+  --primary-platinum: #9b59b6;
+  --text-dark: #333;
+  --text-medium: #555;
+  --text-light: #666;
+  --text-lighter: #444;
+  --success-green: #2ecc71;
+  --primary-blue: #007bff;
+  --border-light: #ddd;
+  --bg-white: #fff;
+  --shadow-sm: 0 2px 5px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 15px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.15);
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --transition-fast: 0.2s;
+  --transition-medium: 0.3s;
+  --transition-slow: 0.4s;
+}
+
+/* Base Card Styles */
+.membership-card {
+  border: 1px solid var(--border-light);
+  border-radius: var(--border-radius-md);
+  padding: 2rem;
+  text-align: center;
+  background-color: var(--bg-white);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-medium) cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  min-height: 600px;
+  max-width: 400px;
+  margin: 1rem;
+  will-change: transform;
+}
+
+/* Card Hover Effects */
+.membership-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+
+.membership-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    var(--primary-silver) 0%,
+    var(--primary-gold) 50%,
+    var(--primary-platinum) 100%
+  );
+  transform: scaleX(0);
+  transition: transform var(--transition-medium) ease;
+}
+
+.membership-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Card Header Styles */
+.membership-card h3 {
+  font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+  margin-bottom: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  position: relative;
+  display: inline-block;
+}
+
+.membership-card h3::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  border-radius: 1.5px;
+  transition: width var(--transition-medium) ease;
+}
+
+.membership-card:hover h3::after {
+  width: 60px;
+}
+
+/* Tier-specific Styles */
+.membership-card.silver {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.membership-card.silver h3 { 
+  color: var(--primary-silver);
+}
+
+.membership-card.silver h3::after {
+  background: var(--primary-silver);
+}
+
+.membership-card.gold {
+  background: linear-gradient(135deg, #fff9c4 0%, #fff176 100%);
+}
+
+.membership-card.gold h3 { 
+  color: var(--primary-gold);
+}
+
+.membership-card.gold h3::after {
+  background: var(--primary-gold);
+}
+
+.membership-card.platinum {
+  background: linear-gradient(135deg, #e1bee7 0%, #ce93d8 100%);
+}
+
+.membership-card.platinum h3 { 
+  color: var(--primary-platinum);
+}
+
+.membership-card.platinum h3::after {
+  background: var(--primary-platinum);
+}
+
+/* Price Section */
+.membership-card .price {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 800;
+  margin: 1.5rem 0;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.membership-card .price .currency {
+  font-size: 0.6em;
+  font-weight: 600;
+  vertical-align: super;
+}
+
+.membership-card .price .period {
+  font-size: 0.4em;
+  color: var(--text-light);
+  font-weight: normal;
+}
+
+/* Description */
+.membership-card .description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  min-height: 48px;
+  padding: 0 1rem;
+}
+
+/* Benefits Section */
+.membership-card h4 {
+  font-size: 1.2rem;
+  margin: 1.5rem 0 1rem;
+  text-align: left;
+  color: var(--text-medium);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 0.5rem;
+}
+
+/* Feature List */
+.membership-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.membership-card ul li {
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-lighter);
+  padding: 0.5rem 0 0.5rem 1.75rem;
+  position: relative;
+  transition: transform var(--transition-fast) ease;
+}
+
+.membership-card ul li:hover {
+  transform: translateX(5px);
+}
+
+.membership-card ul li::before {
+  content: '✓';
+  color: var(--success-green);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  font-size: 1.1em;
+  opacity: 0.9;
+  transition: opacity var(--transition-fast) ease;
+}
+
+.membership-card ul li:hover::before {
+  opacity: 1;
+}
+
+/* Button Styles */
+.membership-card button {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-medium) ease;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, #0056b3 100%);
+  color: var(--bg-white);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.membership-card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,123,255,0.4);
+}
+
+.membership-card button:active {
+  transform: translateY(1px);
+}
+
+/* Current Plan Styles */
+.membership-card.current-plan {
+  border: 2px solid var(--primary-blue);
+  transform: scale(1.05);
+}
+
+.membership-card.current-plan:hover {
+  transform: scale(1.07);
+}
+
+.current-plan-indicator {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, #0056b3 100%);
+  color: var(--bg-white);
+  border-radius: var(--border-radius-sm);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.current-plan-indicator svg {
+  font-size: 1.1em;
+}
+
+/* Popular Badge */
+.membership-card .popular-badge {
+  position: absolute;
+  top: 1rem;
+  right: -2rem;
+  background: var(--primary-gold);
+  color: var(--text-dark);
+  padding: 0.5rem 3rem;
+  transform: rotate(45deg);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .membership-card {
+    min-height: 500px;
+    padding: 1.5rem;
+    margin: 0.75rem;
+  }
+
+  .membership-card h3 {
+    font-size: 1.6rem;
+  }
+
+  .membership-card .price {
+    font-size: 1.8rem;
+  }
+
+  .membership-card .description {
+    font-size: 0.9rem;
+    min-height: 40px;
+  }
+
+  .membership-card ul li {
+    font-size: 0.9rem;
+    padding-left: 1.5rem;
+  }
+
+  .membership-card button {
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .membership-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+
+  .membership-card button,
+  .membership-card::before,
+  .membership-card .popular-badge {
+    display: none;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .membership-card,
+  .membership-card::before,
+  .membership-card h3::after,
+  .membership-card ul li,
+  .membership-card button {
+    transition: none;
+  }
+}
+
+/* Pricing Switch Styles */
+.pricing-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem;
+  background: var(--bg-white);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.pricing-switch span {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  transition: color var(--transition-fast) ease;
+}
+
+.pricing-switch span.active {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.pricing-switch .switch {
+  position: relative;
+  width: 50px;
+  height: 24px;
+  background: var(--border-light);
+  border-radius: 12px;
+  padding: 2px;
+  cursor: pointer;
+  transition: background var(--transition-fast) ease;
+  border: none;
+}
+
+.pricing-switch .switch:hover {
+  background: #ccc;
+}
+
+.pricing-switch .switch-handle {
+  width: 20px;
+  height: 20px;
+  background: var(--bg-white);
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
+}
+
+.pricing-switch .switch.yearly {
+  background: var(--success-green);
+}
+
+.pricing-switch .switch.yearly:hover {
+  background: #27ae60;
+}
+
+.pricing-switch .savings-indicator {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+/* Feature Tooltip Styles */
+.feature-tooltip-container {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+.feature-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text-dark);
+  color: var(--bg-white);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  z-index: 10;
+  box-shadow: var(--shadow-md);
+  pointer-events: none;
+}
+
+.feature-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--text-dark) transparent transparent transparent;
+}
