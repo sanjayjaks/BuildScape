@@ -1,171 +1,132 @@
-# 🏗️ BuildScape — Smart Service Marketplace
+# 🏗️ BuildScape
 
-**BuildScape** is a smart service marketplace project focused on connecting people with construction, home improvement, and interior-design services. The goal is to make discovering services and planning projects simpler through a user-friendly digital platform, with an ambitious vision for immersive 3D experiences.
+**An open-source marketplace connecting people with verified construction and interior-design professionals, with interactive 3D project visualization on the roadmap.**
 
-🔗 **GitHub Repository:** https://github.com/sanjayjaks/BuildScape
+![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+![Status](https://img.shields.io/badge/status-in%20development-orange.svg)
+![Stack](https://img.shields.io/badge/stack-React%20%7C%20Node%20%7C%20MongoDB-green.svg)
 
----
+## Why BuildScape?
 
-## 🌟 About the Project
+Finding trustworthy construction and interior-design professionals is hard. Providers are scattered across word-of-mouth, social media and unverified listings, and clients can't easily compare work, get estimates, or picture the result before hiring.
 
-Finding the right professionals for construction and interior-design work can be complicated. BuildScape aims to bring service discovery and project-related workflows into one accessible platform.
+BuildScape brings discovery, provider verification, project management and (soon) 3D previews into one platform.
 
-The project is being developed with a focus on usability, modern web technologies, and an engaging visual experience. Its long-term vision includes interactive 3D visuals that can help users explore ideas and better understand spaces and services.
+## Features
 
-> **Project status:** BuildScape is under active development. Features and integrations may change as the project evolves.
+**Working today**
+- 🔐 **Authentication:** registration and login with JWT, bcrypt password hashing, and role-based access (client / service provider)
+- 🔎 **Service discovery:** browse, search and filter service providers
+- 🧑‍🔧 **Provider onboarding:** provider registration with verification document upload (multer)
+- 📁 **Projects:** create and manage project information through the API and dashboard
+- 💰 **Estimates:** service estimate endpoint
+- 🖼️ **Portfolios:** verified providers can add portfolio items
+- 💎 **Membership UI:** membership plan components
+- 🎨 **Modern UI:** responsive React interface with Tailwind CSS and Framer Motion
 
-## ✨ Key Features and Application Areas
+**Planned**
+- 🧊 Interactive 3D room and project visualization (three.js)
+- 📧 Email verification and notifications
+- ✅ Automated tests and CI
+- 🔒 Security hardening (rate limiting, upload validation, secrets management)
 
-- **Service discovery:** Explore construction and interior-related services.
-- **Search and filtering:** User interfaces for finding relevant services and providers.
-- **User authentication:** Registration and login functionality.
-- **Project workflows:** Interfaces and API functionality for creating and managing project information.
-- **Service-provider profiles:** Provider-related registration and profile functionality.
-- **Membership experience:** Membership-related interface components.
-- **Modern user interface:** Responsive web application components, animations, and interactive layouts.
-- **3D experience vision:** A planned direction for richer visual exploration and interactive project experiences.
+> Some UI areas use mock data or are still under development. See the code for current details.
 
-Some areas may use mock data or remain under development. Refer to the source code for the current implementation details.
+## Tech Stack
 
-## 🎯 Our Vision
+| Layer | Technologies |
+|---|---|
+| Frontend | React 18, TypeScript, Vite, React Router, Tailwind CSS, Framer Motion, Axios |
+| Backend | Node.js, Express, MongoDB, Mongoose, JWT, bcryptjs, Multer |
 
-Our vision is to build a practical digital marketplace that helps people discover construction and interior-design services with greater clarity and convenience.
+## Project Structure
 
-We aim to develop BuildScape into a platform that combines useful marketplace functionality with engaging design and interactive 3D visuals. The objective is to create an experience that is approachable for users while providing a foundation for future improvements.
-
-## 🛠️ Technology Stack
-
-### Frontend
-- React
-- TypeScript
-- Vite
-- React Router
-- Tailwind CSS
-- Framer Motion
-
-### Backend
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-- JSON Web Tokens (JWT)
-- bcryptjs
-
-## 📁 Project Structure
-
-```text
+```
 BuildScape/
-├── frontend/       # React and TypeScript application
+├── frontend/          # React + TypeScript app (Vite)
 │   └── src/
-│       ├── auth/
-│       ├── components/
-│       ├── context/
-│       ├── layouts/
-│       ├── pages/
-│       ├── services/
-│       └── utils/
-│
-└── backend/        # Express API and database functionality
-    ├── config/
-    ├── controllers/
-    ├── middleware/
-    ├── models/
-    ├── routes/
-    ├── utils/
+│       ├── auth/  components/  context/  layouts/
+│       └── pages/  services/  utils/
+└── backend/           # Express REST API
+    ├── config/  controllers/  middleware/
+    ├── models/  routes/  utils/
     └── server.js
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
-
-Make sure you have the following installed:
-
-- Node.js
+- Node.js 18+
 - npm
-- MongoDB
+- MongoDB running locally (or a MongoDB Atlas connection string)
 
-### 1. Clone the repository
-
+### 1. Clone
 ```bash
 git clone https://github.com/sanjayjaks/BuildScape.git
 cd BuildScape
 ```
 
-### 2. Set up the frontend
+### 2. Backend
+```bash
+cd backend
+npm install
+cp .env.example .env    # then edit .env (see below)
+npm run dev
+```
+The API runs at `http://localhost:5000`. Check it at `http://localhost:5000/api/health`.
 
+### 3. Frontend
+In a second terminal:
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
+The app runs at `http://localhost:5173`.
 
-### 3. Set up the backend
+## Environment Variables
 
-Open another terminal:
-
-```bash
-cd backend
-npm install
-node server.js
-```
-
-Configure the required environment variables and ensure MongoDB is running before starting the backend.
-
-The frontend and backend may require additional configuration depending on your local environment.
-
-## 🔐 Environment Configuration
-
-Create local environment files as required by the application.
-
-Example backend configuration:
-
+`backend/.env`:
 ```env
 PORT=5000
 NODE_ENV=development
-JWT_SECRET=your_secure_secret
+MONGO_URI=mongodb://127.0.0.1:27017/buildscape
+JWT_SECRET=replace_with_a_long_random_string
 FRONTEND_URL=http://localhost:5173
 BASE_URL=http://localhost:5000
 ```
 
-Use secure, private values for secrets. Never commit credentials, tokens, or sensitive environment files to GitHub.
+`frontend/.env` (optional):
+```env
+VITE_API_URL=http://localhost:5000/api
+```
 
-## 🗺️ Development Roadmap
+Never commit `.env` files or secrets.
 
-BuildScape is an evolving project. Potential development areas include:
+## API Overview
 
-- Improving service discovery and marketplace workflows.
-- Refining user and service-provider experiences.
-- Enhancing project management functionality.
-- Developing immersive 3D visuals and interactive exploration.
-- Improving accessibility, responsiveness, and performance.
-- Expanding testing, security, and production readiness.
+| Route | Description |
+|---|---|
+| `POST /api/auth/register`, `POST /api/auth/login` | Create account, sign in |
+| `GET /api/services/providers` | List service providers |
+| `GET /api/services/search` | Search and filter providers |
+| `GET /api/services/providers/:id` | Provider details |
+| `POST /api/services/register` | Register as a provider (with documents) |
+| `POST /api/services/estimate` | Get a service estimate (auth required) |
+| `/api/projects` | Project management (auth required) |
+| `GET /api/health` | Health check |
 
-This roadmap describes development goals, not a guarantee that every item is already implemented.
+## Roadmap
 
-## 🤝 Contributions
+- [ ] Fix and stabilize the build and CI pipeline
+- [ ] Add automated tests (backend and frontend)
+- [ ] Email verification and notifications
+- [ ] **3D visualization:** interactive room and project previews with three.js
+- [ ] Security hardening and production deployment guide
+- [ ] Accessibility and performance improvements
 
-Suggestions, feedback, and contributions are welcome.
+## Contributing
 
-If you would like to contribute:
+Contributions are welcome.
 
-1. Fork the repository.
-2. Create a branch for your changes.
-3. Make your changes and test them.
-4. Submit a pull request describing your contribution.
-
-Please avoid including credentials, private data, or generated dependency directories in contributions.
-
-## 📌 Project Status
-
-BuildScape is a work in progress. The application is being developed iteratively, with functionality and design continuing to evolve.
-
-## 👨‍💻 Developer
-
-**Sanjay Jakkani**
-
-GitHub: [@sanjayjaks](https://github.com/sanjayjaks)
-
-## 📄 License
-
-A project-level license has not yet been specified. Licensing information will be added once the project's license is determined.
+1. Fork the repo and create a branch: `git checkout -b
